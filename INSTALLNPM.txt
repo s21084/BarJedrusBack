@@ -6,3 +6,8 @@ npx ts-node src/index.ts
 http://localhost:3000/
 
 npm run dev - druga wersja
+
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+
+npx prisma migrate dev --name "init"

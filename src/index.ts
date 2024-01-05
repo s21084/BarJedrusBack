@@ -5,6 +5,7 @@ import eventRoutes from './routes/eventRoutes'
 import scheduleRoute from './routes/scheduleRoute'
 import vacationRoutes from './routes/vacationRoutes'
 import subscriptionRoutes from './routes/subscriptionRoutes'
+import personRoutes from './routes/personRoute'
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use('/dish', dishRoutes);
 app.use('/schedule', scheduleRoute);
 app.use('/vacation', vacationRoutes);
 app.use('/subscriptin', subscriptionRoutes);
+app.use('/person', personRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello world.');
