@@ -6,6 +6,7 @@ import scheduleRoute from './routes/scheduleRoute'
 import vacationRoutes from './routes/vacationRoutes'
 import subscriptionRoutes from './routes/subscriptionRoutes'
 import personRoutes from './routes/personRoute'
+import infoBarRoute from './routes/infoBarRoutes'
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use('/schedule', scheduleRoute);
 app.use('/vacation', vacationRoutes);
 app.use('/subscription', subscriptionRoutes);
 app.use('/person', personRoutes);
+app.use('/infoBar', infoBarRoute);
 
 app.get('/', (req, res) => {
     res.send('Hello world.');
