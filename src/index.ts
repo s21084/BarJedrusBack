@@ -14,7 +14,7 @@ app.use('/event', eventRoutes);
 app.use('/dish', dishRoutes);
 app.use('/schedule', scheduleRoute);
 app.use('/vacation', vacationRoutes);
-app.use('/subscriptin', subscriptionRoutes);
+app.use('/subscription', subscriptionRoutes);
 app.use('/person', personRoutes);
 
 app.get('/', (req, res) => {
