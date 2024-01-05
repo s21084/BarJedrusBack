@@ -7,8 +7,23 @@ const router = Router();
 
 //Create Schedule
 router.post('/', async (req, res) => {
-    res.status(501).json({error: "Not implemented"})
+    const { startHour, endHour, userId } = req.body;
+    try{
+        const result = await prisma.schedule.create({
+            data: {
+                startHour,
+                endHour,
+                userId
+            },
+        });
+    
+        res.json(result);
+    } catch (e) {
+        res.status(400).json({error: "Something went wrong, check if data is unique"})
+    }
+    
 });
+
 
 //List Schedule
 router.get('/', async (req, res) => {

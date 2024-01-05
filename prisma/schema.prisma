@@ -84,4 +84,13 @@ model InformationBar {
  startHour DateTime
  endHour DateTime
  bonusNote String?
+ workDay WorkDay[]
+}
+
+model WorkDay {
+ id Int @id @default(autoincrement())
+ date DateTime
+ isEvent Boolean @default(false) 
+ informationBarId Int @default(1)
+ informationBar InformationBar @relation(fields: [informationBarId], references: [id])
 }
