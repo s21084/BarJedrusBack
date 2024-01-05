@@ -1,0 +1,8 @@
+npm install express
+npm install typescript ts-node nodemon @types/node @types/express --save-dev
+
+starting server:
+npx ts-node src/index.ts
+http://localhost:3000/
+
+npm run dev - druga wersja
