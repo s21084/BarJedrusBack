@@ -5,29 +5,29 @@ const router = Router();
 //Empty CRUD
 
 //Create Empty
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     res.status(501).json({error: "Not implemented"})
 });
 
 //List Empty
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     res.status(501).json({error: "Not implemented get list"})
 });
 
 //Get one Empty
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params;
     res.status(501).json({error: `Not implemented get one : ${id}`})
 });
 
 //Update Empty
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
     res.status(501).json({error: `Not implemented update : ${id}`})
 });
 
 //Delete Empty
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     res.status(501).json({error: `Not implemented delete : ${id}`})
 });

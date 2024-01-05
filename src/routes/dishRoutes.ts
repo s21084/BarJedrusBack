@@ -1,35 +1,69 @@
 import { Router } from 'express';
-
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 const router = Router();
 
 //Dish CRUD
 
 //Create Dish
-router.post('/', (req, res) => {
-    res.status(501).json({error: "Not implemented"})
+router.post('/', async (req, res) => {
+    const { name, priceForPiece , priceForWeight  } = req.body;
+    try{
+        const result = await prisma.dish.create({
+            data: {
+                name,
+                priceForPiece,
+                priceForWeight  
+            },
+        });
+    
+        res.json(result);
+    } catch (e) {
+        res.status(400).json({error: "Something went wrong, check if data is unique"})
+    }
+    
 });
 
 //List Dish
-router.get('/', (req, res) => {
-    res.status(501).json({error: "Not implemented get list"})
+router.get('/', async (req, res) => {
+    const allDishes = await prisma.dish.findMany();
+    res.json(allDishes);
 });
 
 //Get one Dish
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    res.status(501).json({error: `Not implemented get one : ${id}`})
+    const dish = await prisma.dish.findUnique({where: {id: Number(id)}});
+    res.json(dish);
 });
 
 //Update Dish
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    res.status(501).json({error: `Not implemented update : ${id}`})
+    const { name, priceForPiece, priceForWeight} = req.body;
+
+    try{
+        const result = await prisma.dish.update({
+            where: { id: Number(id)},
+            data: {
+                name,
+                priceForPiece,
+                priceForWeight
+            },
+        });
+        res.json(result);
+    } catch (e) {
+        res.status(400).json({error: "Unable to update"})
+    }
+
 });
 
+
 //Delete Dish
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params;
-    res.status(501).json({error: `Not implemented delete : ${id}`})
+    await prisma.dish.delete({where: {id: Number(id)}})
+    res.sendStatus(200);
 });
 
 

@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
 const router = Router();
-const prisma = new PrismaClient();
 
 
 //User CRUD
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     
         res.json(result);
     } catch (e) {
-        res.status(400).json({error: "Something went wrong, chack if data is unique"})
+        res.status(400).json({error: "Something went wrong, check if data is unique"})
     }
     
 });
