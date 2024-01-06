@@ -25,3 +25,8 @@ curl -X DELETE http://localhost:3000/user/3
 npm install jsonwebtoken
 npm i --save-dev @types/jsonwebtoken
 
+npm install @aws-sdk/client-ses
+
+npm install dotenv --save
+
+[System.Environment]::SetEnvironmentVariable("AWS_REGION", "us-east-1", [System.EnvironmentVariableTarget]::User)
