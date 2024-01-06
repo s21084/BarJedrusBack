@@ -20,3 +20,8 @@ curl -X PUT -H "Content-Type: application/json" -d "{\"email\": \"Wiktoria.123k@
 
 DELETE REQUEST
 curl -X DELETE http://localhost:3000/user/3  
+
+
+npm install jsonwebtoken
+npm i --save-dev @types/jsonwebtoken
+
