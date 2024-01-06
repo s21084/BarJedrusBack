@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 
 //List infoBar
 router.get('/', async (req, res) => {
-    const allinfoBares = await prisma.workDay.findMany();
+    const allinfoBares = await prisma.workDay.findMany({include:{informationBar: true}});
     res.json(allinfoBares);
 });
 

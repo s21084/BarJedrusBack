@@ -26,14 +26,14 @@ router.post('/', async (req, res) => {
 
 //List Vacation
 router.get('/', async (req, res) => {
-    const allVacation = await prisma.vacation.findMany();
+    const allVacation = await prisma.vacation.findMany({include:{user: true}});
     res.json(allVacation);
 });
 
 //Get one Vacation
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const vacation = await prisma.vacation.findUnique({where: {id: Number(id)}});
+    const vacation = await prisma.vacation.findUnique({where: {id: Number(id)},});
     res.json(vacation);
 });
 //Update Vacation

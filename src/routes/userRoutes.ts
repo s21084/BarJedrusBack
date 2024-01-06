@@ -28,14 +28,14 @@ router.post('/', async (req, res) => {
 
 //List User
 router.get('/', async (req, res) => {
-    const allUsers = await prisma.user.findMany();
+    const allUsers = await prisma.user.findMany({include:{person: true} });
     res.json(allUsers);
 });
 
 //Get one User
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const user = await prisma.user.findUnique({where: {id: Number(id)}});
+    const user = await prisma.user.findUnique({where: {id: Number(id)}, include:{person: true}} );
     res.json(user);
 });
 
