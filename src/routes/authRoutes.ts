@@ -6,7 +6,7 @@ const router = Router();
 
 const EMAIL_TOKEN_EXPIRATION_MINUTES = 10;
 const AUTH_EXPIRATION_HOURS = 24;
-const JWT_SECRET = "SUPER SECRET" 
+const JWT_SECRET = process.env.JWS_SECRET || "Super SeCRET"; 
 
 //endpoints
 //method to generate token

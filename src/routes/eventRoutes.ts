@@ -3,11 +3,15 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const router = Router();
 
+const JWT_SECRET = "SUPER SECRET" 
 //Event CRUD
 
 //Create Event
 router.post('/', async (req, res) => {
     const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes  } = req.body;
+    //@ts-ignore
+   const user = req.user;
+    
     try{
         const result = await prisma.event.create({
             data: {
