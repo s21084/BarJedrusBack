@@ -9,14 +9,10 @@ const router = Router();
 
 //Create User
 router.post('/', async (req, res) => {
-    const { login, personId, email } = req.body;
+    const { email } = req.body;
     try{
         const result = await prisma.user.create({
-            data: {
-                login,
-                personId,
-                email
-            },
+            data: {email},
         });
     
         res.json(result);
@@ -42,7 +38,7 @@ router.get('/:id', async (req, res) => {
 //Update User
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { email, isAdmin, isVerified} = req.body;
+    const { email, isAdmin, isVerified, personId} = req.body;
 
     try{
         const result = await prisma.user.update({
@@ -50,7 +46,8 @@ router.put('/:id', async (req, res) => {
             data: {
                 email,
                 isAdmin,
-                isVerified
+                isVerified,
+                personId
             },
         });
         res.json(result);

@@ -11,15 +11,30 @@ datasource db {
 }
 model User {
  id Int @id @default(autoincrement())
- login String @unique
  email String @unique
- isAdmin Boolean @default(false)
- isVerified Boolean @default(false)
- personId Int 
- person Person @relation(fields: [personId], references: [id])
+ isAdmin Boolean? @default(false)
+ isVerified Boolean? @default(false)
+ personId Int? 
+ person Person? @relation(fields: [personId], references: [id])
  schedule Schedule[]
  vacation Vacation[]
+ token Token[]
 }
+model Token{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type String //EMAIL API
+  emailToken String? @unique
+  valid Boolean @default(true)
+  expiration DateTime
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+}
+//enum TokenType{
+  //EMAIL
+  //API
+//}
 model Person {
  id Int @id @default(autoincrement())
  name String
