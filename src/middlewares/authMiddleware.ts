@@ -14,8 +14,12 @@ export async function authenticateToken(
   next: NextFunction
 ) {
   // Authentication
+  console.log("req ",req.body)
   const authHeader = req.headers['authorization'];
+  console.log("auth ",authHeader)
   const jwtToken = authHeader?.split(' ')[1];
+  
+
   if (!jwtToken) {
     return res.sendStatus(401);
   }
@@ -37,6 +41,7 @@ export async function authenticateToken(
   } catch (e) {
     return res.sendStatus(401);
   }
-
+  
+  console.log(res)
   next();
 }

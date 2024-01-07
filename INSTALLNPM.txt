@@ -14,6 +14,7 @@ npx prisma migrate dev --name "init"
 
 POST REQUEST
 curl -X POST -H "Content-Type: application/json" -d "{\"login\": \"WiktoriaTEST\", \"personId\": 1}" http://localhost:3000/user/  
+curl -X GET -H "Content-Type: application/json" http://localhost:3000/user/  
 
 PUT REQUEST
 curl -X PUT -H "Content-Type: application/json" -d "{\"email\": \"Wiktoria.123k@gmail.com\", \"isAdmin\": true, \"isVerified\": true}" http://localhost:3000/user/1  
