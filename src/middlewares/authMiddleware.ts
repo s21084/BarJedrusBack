@@ -14,9 +14,9 @@ export async function authenticateToken(
   next: NextFunction
 ) {
   // Authentication
-  console.log("req ",req.body)
+ 
   const authHeader = req.headers['authorization'];
-  console.log("auth ",authHeader)
+
   const jwtToken = authHeader?.split(' ')[1];
   
 
