@@ -26,8 +26,8 @@ app.use(express.json());
 //app.use('/workDay', authenticateToken, workDayRoutes);
 //Without authorization
 app.use('/user', userRoutes);
-app.use('/event', eventRoutes);
-//app.use('/event', eventRoutes);
+app.use('/event',authenticateToken , eventRoutes);
+//app.use('/event', authenticateToken, eventRoutes);
 app.use('/dish', dishRoutes);
 app.use('/schedule', scheduleRoute);
 app.use('/vacation', vacationRoutes);
