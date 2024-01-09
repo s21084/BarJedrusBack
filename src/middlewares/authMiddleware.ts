@@ -42,6 +42,5 @@ export async function authenticateToken(
     return res.sendStatus(401);
   }
   
-  console.log(res)
   next();
 }

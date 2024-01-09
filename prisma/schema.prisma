@@ -109,3 +109,9 @@ model WorkDay {
  informationBarId Int @default(1)
  informationBar InformationBar @relation(fields: [informationBarId], references: [id])
 }
+
+model dayDish {
+ id Int @id @default(autoincrement())
+ soup String?
+ secondDish String?
+}

@@ -9,6 +9,7 @@ import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
 import workDayRoutes from './routes/workDayRoutes'
 import authRouters from './routes/authRoutes'
+import dayDishRoute from './routes/dayDishRoute'
 import { authenticateToken } from './middlewares/authMiddleware';
 
 
@@ -17,27 +18,16 @@ const cors = require('cors')
 
 app.use(cors())
 app.use(express.json());
-//app.use('/user', authenticateToken, userRoutes);
-//app.use('/event', authenticateToken, eventRoutes);
-//app.use('/event', eventRoutes);
-//app.use('/dish', authenticateToken, dishRoutes);
-//app.use('/schedule', authenticateToken, scheduleRoute);
-//app.use('/vacation', authenticateToken, vacationRoutes);
-//app.use('/subscription', authenticateToken, subscriptionRoutes);
-//app.use('/person', authenticateToken, personRoutes);
-//app.use('/infoBar', authenticateToken, infoBarRoute);
-//app.use('/workDay', authenticateToken, workDayRoutes);
-//Without authorization
-app.use('/user', userRoutes);
-//app.use('/event', eventRoutes);
+app.use('/user', authenticateToken, userRoutes);
 app.use('/event', authenticateToken, eventRoutes);
-app.use('/dish', dishRoutes);
-app.use('/schedule', scheduleRoute);
-app.use('/vacation', vacationRoutes);
-app.use('/subscription', subscriptionRoutes);
-app.use('/person', personRoutes);
-app.use('/infoBar', infoBarRoute);
-app.use('/workDay', workDayRoutes);
+app.use('/dish', authenticateToken, dishRoutes);
+app.use('/schedule', authenticateToken, scheduleRoute);
+app.use('/vacation', authenticateToken, vacationRoutes);
+app.use('/subscription', authenticateToken, subscriptionRoutes);
+app.use('/person', authenticateToken, personRoutes);
+app.use('/infoBar', authenticateToken, infoBarRoute);
+app.use('/workDay', authenticateToken, workDayRoutes);
+app.use('/dayDish', authenticateToken, dayDishRoute);
 app.use('/auth', authRouters);
 
 
