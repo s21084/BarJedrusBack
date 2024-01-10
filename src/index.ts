@@ -3,7 +3,6 @@ import userRoutes from './routes/userRoutes'
 import dishRoutes from './routes/dishRoutes'
 import eventRoutes from './routes/eventRoutes'
 import scheduleRoute from './routes/scheduleRoute'
-import vacationRoutes from './routes/vacationRoutes'
 import subscriptionRoutes from './routes/subscriptionRoutes'
 import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
@@ -22,7 +21,6 @@ app.use('/user', authenticateToken, userRoutes);
 app.use('/event', authenticateToken, eventRoutes);
 app.use('/dish', authenticateToken, dishRoutes);
 app.use('/schedule', authenticateToken, scheduleRoute);
-app.use('/vacation', authenticateToken, vacationRoutes);
 app.use('/subscription', authenticateToken, subscriptionRoutes);
 app.use('/person', authenticateToken, personRoutes);
 app.use('/infoBar', authenticateToken, infoBarRoute);

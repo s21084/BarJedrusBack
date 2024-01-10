@@ -17,7 +17,6 @@ model User {
  personId Int? 
  person Person? @relation(fields: [personId], references: [id])
  schedule Schedule[]
- vacation Vacation[]
  token Token[]
 }
 model Token{
@@ -79,21 +78,15 @@ model Schedule {
 }
 model Subscription {
  id Int @id @default(autoincrement())
- isCurrentMonthPayed String
- dishType String
- countOfDish Int
+ lastMonthPayed String
+ dishType Boolean
+ countOfDish Int?
  onPlace Boolean
  notes String?
  personId Int 
  person Person @relation(fields: [personId], references: [id])
 }
-model Vacation {
- id Int @id @default(autoincrement())
- dayStart DateTime
- dayEnd DateTime
- userId Int 
- user User @relation(fields: [userId], references: [id])
-}
+
 model InformationBar {
  id Int @id @default(autoincrement())
  startHour DateTime

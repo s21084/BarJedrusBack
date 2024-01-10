@@ -7,11 +7,11 @@ const router = Router();
 
 //Create Subscription
 router.post('/', async (req, res) => {
-    const { isCurrentMonthPayed, dishType, countOfDish, onPlace, notes, personId  } = req.body;
+    const { lastMonthPayed, dishType, countOfDish, onPlace, notes, personId  } = req.body;
     try{
         const result = await prisma.subscription.create({
             data: {
-                isCurrentMonthPayed ,
+                lastMonthPayed ,
                 dishType,
                 countOfDish,
                 onPlace,
@@ -36,20 +36,20 @@ router.get('/', async (req, res) => {
 //Get one Subscription
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const subscription = await prisma.subscription.findUnique({where: {id: Number(id)}});
+    const subscription = await prisma.subscription.findUnique({where: {id: Number(id)},include:{person: true}});
     res.json(subscription);
 });
 
 //Update Subscription
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { isCurrentMonthPayed, dishType, countOfDish, onPlace, notes, personId  } = req.body;
+    const { lastMonthPayed, dishType, countOfDish, onPlace, notes, personId  } = req.body;
 
     try{
         const result = await prisma.subscription.update({
             where: { id: Number(id)},
             data: {
-                isCurrentMonthPayed ,
+                lastMonthPayed ,
                 dishType,
                 countOfDish,
                 onPlace,
