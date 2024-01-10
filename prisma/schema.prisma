@@ -56,7 +56,7 @@ model Dish {
   id Int @id @default(autoincrement())
   name String @unique
   priceForPiece Int?
-  priceForWeight String?
+  priceForWeight Int?
 }
 model Event {
  id Int @id @default(autoincrement())
@@ -71,8 +71,9 @@ model Event {
 }
 model Schedule {
  id Int @id @default(autoincrement())
- startHour DateTime
- endHour DateTime
+ startHour DateTime?
+ endHour DateTime?
+ weekDayNumber Int
  userId Int 
  user User @relation(fields: [userId], references: [id])
 }

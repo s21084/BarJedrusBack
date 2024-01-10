@@ -7,12 +7,13 @@ const router = Router();
 
 //Create Schedule
 router.post('/', async (req, res) => {
-    const { startHour, endHour, userId } = req.body;
+    const { startHour, endHour, weekDayNumber, userId} = req.body;
     try{
         const result = await prisma.schedule.create({
             data: {
                 startHour,
                 endHour,
+                weekDayNumber,
                 userId
             },
         });
