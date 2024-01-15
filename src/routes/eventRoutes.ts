@@ -8,7 +8,7 @@ const JWT_SECRET = "SUPER SECRET"
 
 //Create Event
 router.post('/', async (req, res) => {
-    const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes  } = req.body;
+    const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes, informationBarId  } = req.body;
     //@ts-ignore
    const user = req.user;
     
@@ -22,7 +22,8 @@ router.post('/', async (req, res) => {
                 meatCount, 
                 prePay, 
                 priceFull, 
-                notes   
+                notes,
+                informationBarId
             },
         });
     
@@ -50,7 +51,7 @@ router.get('/:id', async (req, res) => {
 //Update Event
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes  } = req.body;
+    const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes, informationBarId  } = req.body;
 
     try{
         const result = await prisma.event.update({
@@ -63,7 +64,8 @@ router.put('/:id', async (req, res) => {
                 meatCount, 
                 prePay, 
                 priceFull, 
-                notes   
+                notes, 
+                informationBarId
             },
         });
         res.json(result);

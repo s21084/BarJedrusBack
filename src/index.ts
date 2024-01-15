@@ -6,9 +6,9 @@ import scheduleRoute from './routes/scheduleRoute'
 import subscriptionRoutes from './routes/subscriptionRoutes'
 import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
-import workDayRoutes from './routes/workDayRoutes'
 import authRouters from './routes/authRoutes'
-import dayDishRoute from './routes/dayDishRoute'
+import DayDishRoute from './routes/DayDishRoute'
+import adressRoute from './routes/adressRoutes'
 import { authenticateToken } from './middlewares/authMiddleware';
 
 
@@ -24,8 +24,8 @@ app.use('/schedule', authenticateToken, scheduleRoute);
 app.use('/subscription', authenticateToken, subscriptionRoutes);
 app.use('/person', authenticateToken, personRoutes);
 app.use('/infoBar', authenticateToken, infoBarRoute);
-app.use('/workDay', authenticateToken, workDayRoutes);
-app.use('/dayDish', authenticateToken, dayDishRoute);
+app.use('/DayDish', authenticateToken, DayDishRoute);
+app.use('/adress', authenticateToken, adressRoute);
 app.use('/auth', authRouters);
 
 

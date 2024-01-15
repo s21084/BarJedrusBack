@@ -9,103 +9,112 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 model User {
- id Int @id @default(autoincrement())
- email String @unique
- isAdmin Boolean? @default(false)
- isVerified Boolean? @default(false)
- personId Int? 
- person Person? @relation(fields: [personId], references: [id])
- schedule Schedule[]
- token Token[]
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  isAdmin    Boolean?   @default(false)
+  isVerified Boolean?   @default(false)
+  personId   Int?
+  person     Person?    @relation(fields: [personId], references: [id])
+  schedule   Schedule[]
+  token      Token[]
 }
-model Token{
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  type String //EMAIL API
-  emailToken String? @unique
-  valid Boolean @default(true)
+
+model Token {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  type       String //EMAIL API
+  emailToken String?  @unique
+  valid      Boolean  @default(true)
   expiration DateTime
-  userId Int
-  user User @relation(fields: [userId], references: [id])
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
 }
+
 //enum TokenType{
-  //EMAIL
-  //API
+//EMAIL
+//API
 //}
 model Person {
- id Int @id @default(autoincrement())
- name String
- surname String
- phone String
- adressId Int 
- adress Adress @relation(fields: [adressId], references: [id])
- user User[]
- subscription Subscription[]
+  id           Int            @id @default(autoincrement())
+  name         String
+  surname      String
+  phone        String
+  adressId     Int?
+  adress       Adress?        @relation(fields: [adressId], references: [id])
+  user         User[]
+  subscription Subscription[]
 }
+
 model Adress {
-  id Int @id @default(autoincrement())
-  Street String
+  id         Int      @id @default(autoincrement())
+  Street     String
   HomeNumber String
   FlatNumber String?
-  City String
-  person Person[]
+  City       String
+  person     Person[]
 }
+
 model Dish {
-  id Int @id @default(autoincrement())
-  name String @unique
-  priceForPiece Int?
+  id             Int    @id @default(autoincrement())
+  name           String @unique
+  priceForPiece  Int?
   priceForWeight Int?
 }
+
 model Event {
- id Int @id @default(autoincrement())
- name String 
- date DateTime
- decoration Boolean
- vegeCount Int?
- meatCount Int?
- prePay Int?
- priceFull Int?
- notes String
+  id               Int            @id @default(autoincrement())
+  name             String
+  date             DateTime
+  decoration       Boolean
+  vegeCount        Int?
+  meatCount        Int?
+  prePay           Int?
+  priceFull        Int?
+  notes            String
+  informationBarId Int
+  informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }
+
 model Schedule {
- id Int @id @default(autoincrement())
- startHour DateTime?
- endHour DateTime?
- weekDayNumber Int
- userId Int 
- user User @relation(fields: [userId], references: [id])
+  id               Int            @id @default(autoincrement())
+  startHour        DateTime?
+  endHour          DateTime?
+  weekDayNumber    Int
+  userId           Int
+  user             User           @relation(fields: [userId], references: [id])
+  informationBarId Int
+  informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }
+
 model Subscription {
- id Int @id @default(autoincrement())
- lastMonthPayed String
- dishType Boolean
- countOfDish Int?
- onPlace Boolean
- notes String?
- personId Int 
- person Person @relation(fields: [personId], references: [id])
+  id             Int     @id @default(autoincrement())
+  lastMonthPayed String
+  dishType       Boolean
+  countOfDish    Int?
+  onPlace        Boolean
+  notes          String?
+  personId       Int
+  person         Person  @relation(fields: [personId], references: [id])
 }
 
 model InformationBar {
- id Int @id @default(autoincrement())
- startHour DateTime
- endHour DateTime
- bonusNote String?
- workDay WorkDay[]
+  id        Int        @id @default(autoincrement())
+  startHour DateTime
+  endHour   DateTime
+  bonusNote String?
+  DayDish   DayDish[]
+  event     Event[]
+  schedule  Schedule[]
 }
 
-model WorkDay {
- id Int @id @default(autoincrement())
- date DateTime
- isEvent Boolean @default(false) 
- informationBarId Int @default(1)
- informationBar InformationBar @relation(fields: [informationBarId], references: [id])
-}
-
-model dayDish {
- id Int @id @default(autoincrement())
- soup String?
- secondDish String?
+model DayDish {
+  id               Int            @id @default(autoincrement())
+  soup             String?
+  secondDish       String?
+  price            Int            @default(20)
+  informationBarId Int
+  informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }

@@ -4,11 +4,11 @@ const prisma = new PrismaClient();
 const router = Router();
 
 const JWT_SECRET = "SUPER SECRET" 
-//dayDish CRUD
+//DayDish CRUD
 
-//Create dayDish
+//Create DayDish
 router.post('/', async (req, res) => {
-    const { soup, secondDish  } = req.body;
+    const { soup, secondDish, informationBarId  } = req.body;
     //@ts-ignore
    const user = req.user;
     
@@ -16,7 +16,8 @@ router.post('/', async (req, res) => {
         const result = await prisma.dayDish.create({
             data: {
                 soup,
-                secondDish
+                secondDish, 
+                informationBarId
             },
         });
     
@@ -27,31 +28,32 @@ router.post('/', async (req, res) => {
     
 });
 
-//List dayDish
+//List DayDish
 router.get('/', async (req, res) => {
-    const alldayDishs = await prisma.dayDish.findMany();
-    res.json(alldayDishs);
+    const allDayDishs = await prisma.dayDish.findMany();
+    res.json(allDayDishs);
 });
 
-//Get one dayDish
+//Get one DayDish
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const dayDish = await prisma.dayDish.findUnique({where: {id: Number(id)}});
-    res.json(dayDish);
+    const DayDish = await prisma.dayDish.findUnique({where: {id: Number(id)}});
+    res.json(DayDish);
 });
 
 
-//Update dayDish
+//Update DayDish
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { soup, secondDish  } = req.body;
-
+    const { soup, secondDish , informationBarId } = req.body;
+    
     try{
         const result = await prisma.dayDish.update({
             where: { id: Number(id)},
             data: {
                 soup,
-                secondDish 
+                secondDish,
+                informationBarId
             },
         });
         res.json(result);
@@ -61,7 +63,7 @@ router.put('/:id', async (req, res) => {
 
 });
 
-//Delete dayDish
+//Delete DayDish
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     await prisma.dayDish.delete({where: {id: Number(id)}})
