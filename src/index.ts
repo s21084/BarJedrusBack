@@ -7,7 +7,7 @@ import subscriptionRoutes from './routes/subscriptionRoutes'
 import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
 import authRouters from './routes/authRoutes'
-import DayDishRoute from './routes/DayDishRoute'
+import DayDishRoute from './routes/dayDishRoute'
 import adressRoute from './routes/adressRoutes'
 import { authenticateToken } from './middlewares/authMiddleware';
 
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
     res.send('Hello world.');
 });
 
-app.listen(3000, () => {
-    console.log("Server ready at localhost:3000 :)");
+app.listen(3001, () => {
+    console.log("Server ready at localhost:3001 :)");
 });
 
