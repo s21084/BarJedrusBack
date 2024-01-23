@@ -29,9 +29,16 @@ router.get('/', async (req, res) => {
 });
 
 //Get one User
-router.get('/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     const { id } = req.params;
     const user = await prisma.user.findUnique({where: {id: Number(id)}, include:{person: true}} );
+    res.json(user);
+});
+
+//get user by email
+router.get('/email/:email', async (req, res) => {
+    const { email } = req.params;
+    const user = await prisma.user.findUnique({where: {email: email}, include:{person: true}} );
     res.json(user);
 });
 
