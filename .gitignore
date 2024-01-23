@@ -3,6 +3,7 @@
 
 ### Node ###
 # Logs
+prisma/dev.db
 logs
 *.log
 npm-debug.log*
