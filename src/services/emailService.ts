@@ -40,8 +40,8 @@ export async function sendEmailToken(email: string, token: string) {
   );
   try {
     console.log("Wiadomość wysłana");
-    //return await ses.send(command);   TO MUSZĘ ODBLOKOWAĆ PÓŹNIEJ
-    return;
+    return await ses.send(command);   //TO MUSZĘ ODBLOKOWAĆ PÓŹNIEJ
+    //return;
   } catch (e) {
     console.log('Error sending email', e);
     return error;
