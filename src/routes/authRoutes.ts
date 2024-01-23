@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
         },
       },
     });
-
+    console.log(email, " ", emailToken);
     await sendEmailToken(email, emailToken);
     res.sendStatus(200);
   } catch (e) {
