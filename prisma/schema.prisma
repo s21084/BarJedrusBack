@@ -74,7 +74,7 @@ model Event {
   prePay           Int?
   priceFull        Int?
   notes            String
-  informationBarId Int
+  informationBarId Int            @default(1)
   informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }
 
@@ -85,7 +85,7 @@ model Schedule {
   weekDayNumber    Int
   userId           Int
   user             User           @relation(fields: [userId], references: [id])
-  informationBarId Int
+  informationBarId Int            @default(1)
   informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }
 
@@ -115,6 +115,6 @@ model DayDish {
   soup             String?
   secondDish       String?
   price            Int            @default(20)
-  informationBarId Int
+  informationBarId Int            @default(1)
   informationBar   InformationBar @relation(fields: [informationBarId], references: [id])
 }

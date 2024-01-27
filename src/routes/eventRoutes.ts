@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const router = Router();
 
-const JWT_SECRET = "SUPER SECRET" 
+//const JWT_SECRET = "SUPER SECRET" 
 //Event CRUD
 
 //Create Event
