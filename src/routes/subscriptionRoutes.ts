@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
 //List Subscription
 router.get('/', async (req, res) => {
-    const allSubscription = await prisma.subscription.findMany();
+    const allSubscription = await prisma.subscription.findMany({include:{person: true} });
     res.json(allSubscription);
 });
 
