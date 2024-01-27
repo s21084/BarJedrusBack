@@ -5,7 +5,7 @@ const router = Router();
 
 //infoBar CRUD
 
-//Create infoBar - not sure if it will be used
+//WONT BE USED - but leave if I want to change this one day
 router.post('/', async (req, res) => {
     const { startHour, endHour  , bonusNote   } = req.body;
     try{
@@ -25,10 +25,13 @@ router.post('/', async (req, res) => {
 });
 
 //List infoBar
-router.get('/', async (req, res) => {
-    const allinfoBares = await prisma.informationBar.findMany();
+
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const allinfoBares = await prisma.informationBar.findUnique({where: {id: Number(id)}});
     res.json(allinfoBares);
 });
+
 
 //Update infoBar
 router.put('/:id', async (req, res) => {
