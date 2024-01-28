@@ -43,19 +43,22 @@ model Person {
   surname      String
   phone        String
   adressId     Int?
-  adress       Adress?        @relation(fields: [adressId], references: [id])
+  Street       String?
+  HomeNumber   String?
+  FlatNumber   String?
+  City         String?
   user         User[]
   subscription Subscription[]
 }
 
-model Adress {
-  id         Int      @id @default(autoincrement())
-  Street     String
-  HomeNumber String
-  FlatNumber String?
-  City       String
-  person     Person[]
-}
+// model Adress {
+//   id         Int      @id @default(autoincrement())
+//   Street     String
+//   HomeNumber String
+//   FlatNumber String?
+//   City       String
+//   person     Person[]
+// }
 
 model Dish {
   id             Int    @id @default(autoincrement())
