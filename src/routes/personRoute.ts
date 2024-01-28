@@ -8,14 +8,17 @@ const prisma = new PrismaClient();
 
 //Create Person
 router.post('/', async (req, res) => {
-    const { name, surname, phone, adressId } = req.body;
+    const { name, surname, phone, Street, HomeNumber, FlatNumber, City } = req.body;
     try{
         const result = await prisma.person.create({
             data: {
                 name, 
                 surname, 
                 phone, 
-                adressId
+                Street,
+                HomeNumber,
+                FlatNumber,
+                City
             },
         });
     
@@ -28,21 +31,21 @@ router.post('/', async (req, res) => {
 
 //List Person
 router.get('/', async (req, res) => {
-    const allPerson = await prisma.person.findMany({include:{adress: true} });
+    const allPerson = await prisma.person.findMany();
     res.json(allPerson);
 });
 
 //Get one Person
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const person = await prisma.person.findUnique({where: {id: Number(id)}, include:{adress: true}});
+    const person = await prisma.person.findUnique({where: {id: Number(id)}});
     res.json(person);
 });
 
 //Update Person
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, surname, phone, adressId} = req.body;
+    const { name, surname, phone, Street, HomeNumber, FlatNumber, City} = req.body;
 
     try{
         const result = await prisma.person.update({
@@ -51,7 +54,11 @@ router.put('/:id', async (req, res) => {
                 name, 
                 surname, 
                 phone, 
-                adressId
+                Street,
+                HomeNumber,
+                FlatNumber,
+                City
+
             },
         });
         res.json(result);
