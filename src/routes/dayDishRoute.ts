@@ -8,7 +8,7 @@ const JWT_SECRET = "SUPER SECRET"
 
 //Create DayDish
 router.post('/', async (req, res) => {
-    const { soup, secondDish, informationBarId  } = req.body;
+    const { soup, secondDish, price,informationBarId  } = req.body;
     //@ts-ignore
    const user = req.user;
     
@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
             data: {
                 soup,
                 secondDish, 
+                price,
                 informationBarId
             },
         });
@@ -45,7 +46,7 @@ router.get('/:id', async (req, res) => {
 //Update DayDish
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { soup, secondDish , informationBarId } = req.body;
+    const { soup, secondDish , price, informationBarId } = req.body;
     
     try{
         const result = await prisma.dayDish.update({
@@ -53,6 +54,7 @@ router.put('/:id', async (req, res) => {
             data: {
                 soup,
                 secondDish,
+                price,
                 informationBarId
             },
         });
