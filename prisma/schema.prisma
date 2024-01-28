@@ -51,15 +51,6 @@ model Person {
   subscription Subscription[]
 }
 
-// model Adress {
-//   id         Int      @id @default(autoincrement())
-//   Street     String
-//   HomeNumber String
-//   FlatNumber String?
-//   City       String
-//   person     Person[]
-// }
-
 model Dish {
   id             Int    @id @default(autoincrement())
   name           String @unique

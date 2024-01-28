@@ -8,7 +8,7 @@ import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
 import authRouters from './routes/authRoutes'
 import DayDishRoute from './routes/dayDishRoute'
-import adressRoute from './routes/adressRoutes'
+//import adressRoute from './routes/adressRoutes'
 import { authenticateToken } from './middlewares/authMiddleware';
 
 
@@ -25,7 +25,7 @@ app.use('/subscription', authenticateToken, subscriptionRoutes);
 app.use('/person', authenticateToken, personRoutes);
 app.use('/infoBar', authenticateToken, infoBarRoute);
 app.use('/DayDish', authenticateToken, DayDishRoute);
-app.use('/adress', authenticateToken, adressRoute);
+//app.use('/adress', authenticateToken, adressRoute);
 app.use('/auth', authRouters);
 
 
