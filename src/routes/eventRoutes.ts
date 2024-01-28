@@ -29,7 +29,8 @@ router.post('/', async (req, res) => {
     
         res.json(result);
     } catch (e) {
-        res.status(400).json(e.message)
+        console.log("Error ",e);
+        res.status(400).json({error: "Something went wrong, check if data is unique"})
     }
     
 });
