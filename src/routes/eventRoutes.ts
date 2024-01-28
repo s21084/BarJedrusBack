@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     const { name, date, decoration, vegeCount, meatCount, prePay, priceFull, notes, informationBarId  } = req.body;
     //@ts-ignore
    const user = req.user;
-    
+
     try{
         const result = await prisma.event.create({
             data: {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     
         res.json(result);
     } catch (e) {
-        res.status(400).json({error: "Something went wrong, check if data is unique"})
+        res.status(400).json(e.message)
     }
     
 });
