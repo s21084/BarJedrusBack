@@ -23,7 +23,7 @@ router.get('/dayDish/:id', async (req, res) => {
 });
 
 //List dishes
-router.get('/dayDish/menu/', async (req, res) => {
+router.get('/dish/menu', async (req, res) => {
   const allDishes = await prisma.dish.findMany();
   res.json(allDishes);
 });
