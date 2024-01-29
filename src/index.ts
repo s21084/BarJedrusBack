@@ -8,6 +8,7 @@ import personRoutes from './routes/personRoute'
 import infoBarRoute from './routes/infoBarRoutes'
 import authRouters from './routes/authRoutes'
 import DayDishRoute from './routes/dayDishRoute'
+import notLogRoute from './routes/notLogOn'
 //import adressRoute from './routes/adressRoutes'
 import { authenticateToken } from './middlewares/authMiddleware';
 
@@ -27,6 +28,7 @@ app.use('/infoBar', authenticateToken, infoBarRoute);
 app.use('/DayDish', authenticateToken, DayDishRoute);
 //app.use('/adress', authenticateToken, adressRoute);
 app.use('/auth', authRouters);
+app.use('/notLog', notLogRoute);
 
 
 
