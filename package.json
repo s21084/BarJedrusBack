@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "backend": "pm2 start --watch --name api --interpreter /usr/bin/ts-node src/index.ts",
+    "prisma": "pm2 start --watch --name prisma --interpreter /usr/bin/npx 'prisma studio'"
   },
   "keywords": [],
   "author": "",
