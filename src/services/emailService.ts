@@ -30,7 +30,7 @@ function createSendEmailCommand(
 }
 
 export async function sendEmailToken(email: string, token: string) {
-  console.log('email: ', email, token);
+  //console.log('email: ', email, token);
   
   const message = `Your one time password: ${token}`;
   const command = createSendEmailCommand(
@@ -39,7 +39,7 @@ export async function sendEmailToken(email: string, token: string) {
     message
   );
   try {
-    console.log("Wiadomość wysłana");
+    //console.log("Wiadomość wysłana");
     return await ses.send(command);   //TO MUSZĘ ODBLOKOWAĆ PÓŹNIEJ
     //return;
   } catch (e) {
