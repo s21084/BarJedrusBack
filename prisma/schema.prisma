@@ -42,7 +42,6 @@ model Person {
   name         String
   surname      String
   phone        String
-  adressId     Int?
   Street       String?
   HomeNumber   String?
   FlatNumber   String?
